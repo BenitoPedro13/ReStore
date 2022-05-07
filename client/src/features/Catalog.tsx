@@ -1,6 +1,8 @@
 import { Product } from "../app/models/product";
 import { CatalogComponent } from "../app/models/catalogComponent"
 
+import { Avatar, Button, List, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
+
 const Catalog = ({ products, setProducts }: CatalogComponent) => {
 
   const addProduct = () => {
@@ -18,22 +20,19 @@ const Catalog = ({ products, setProducts }: CatalogComponent) => {
 
   return (
     <>
-      <ul id="productList">
+      <List id="productList">
         {products.map((product) => {
           return (
-            <li key={product.id} style={{ marginBottom: '1rem' }}>
-              Name: {product.name} <br />
-              Price: {product.price} <br />
-              Description: {product.description} <br />
-              Picture: <img src="https://picsum.photos/200" alt={product.name} /> <br />
-              Type: {product.type} <br />
-              Quantity in Stock: {product.quantityInStock} <br />
-              {product.brand ? "Brand: " + product.brand : ""}
-            </li>
+            <ListItem key={product.id}>
+              <ListItemAvatar>
+                <Avatar src={product.pictureUrl} alt={product.name} />
+              </ListItemAvatar>
+              <ListItemText primary={product.name} secondary={product.description} />
+            </ListItem>
           );
         })}
-      </ul>
-      <button onClick={addProduct}>Add Product</button>
+      </List>
+      <Button variant="contained" onClick={addProduct}>Add Product</Button>
     </>
   );
 };
