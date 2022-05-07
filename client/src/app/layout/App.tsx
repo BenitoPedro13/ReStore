@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import Catalog from '../../features/Catalog';
-import { Product } from '../models/product';
+import Catalog from '../../features/catalog/Catalog';
+import Header from './Header';
 
-import { Typography } from '@mui/material';
+import { Product } from '../models/product';
+import { Container, CssBaseline } from '@mui/material';
 
 function App() {
 
@@ -17,8 +18,11 @@ function App() {
 
   return (
     <>
-      <Typography variant="h3" component="h3">Re-store</Typography>
-      <Catalog products={products} setProducts={setProducts} />
+      <CssBaseline />
+      <Header />
+      <Container>
+        <Catalog products={products} setProducts={setProducts} />
+      </Container>
     </>
   );
 }
